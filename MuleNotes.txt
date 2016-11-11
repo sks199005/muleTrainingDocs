@@ -1,0 +1,211 @@
+DAY 2:
+-------
+
+FILE TRANSFER:
+---------------
+
+file(source) --> read ------- log ------- write --> file(destination)
+
+^[a-zA-B]*(.txt)$
+
+
+
+HTTP connector:
+----------------
+
+
+
+
+ROUTERS:
+---------
+Encrpt - Decrypt
+
+source (read)
+encoded
+encoded-copy
+
+File --> logger --> encoding algo --> logger --> scatter -gather --> encoded & encoded_copy
+
+
+
+Type of variable supported by Mule:
+-------------------------------------
+Record variable (mainly used for batch processing)
+Flow variable (scope with-in a flow)
+
+http connector --> flow var --> session var --> payload --> flow logger --> session --> VM
+
+#[flowVars.flowVar]
+#[sessionVars.sessionvar]
+
+
+Session variable (scope with-in a whole session)
+
+
+Choice:
+--------
+http connector --> session variable (store the http method) --> logger --> choice
+
+type of choice which we going to implement:
+--------
+GET -->
+PUT -->
+Default -->
+
+
+
+Flow References:
+-----------------
+
+
+
+
+
+
+DAY-4:
+-------
+message properties..... payload properties
+
+[#message.payload.java.lang.String]
+
+
+--> import the csv into database
+
+ - import org.mule.util.StringUtils class used to split the records
+file --> object to string --> splitter --> expression --> db
+
+
+
+
+
+DAY-5:
+--------
+VM --> Virtual Memory (in memory queue)
+
+HTTP connector --> set payload --> logger --> VM
+
+VM --> file --> 
+
+
+DAY-7:
+-------
+Idemponent Filters:
+-----------------
+
+httpconnector --> Idemponent Filter --> Payload
+(xml file --> REST)
+
+#[xpath3("/custom_path")]
+
+
+Round Robin:
+-------------
+
+
+Json Schema Validator:
+-----------------------
+ValidateJSONSchema Componenet
+
+httpconnector 			--> JsonSchemaValidator  --> payload
+(REST --> Json File)			(Schema File)
+
+
+Day8:
+
+1. How to connect DBDerby DB --> Bean Config --> Obj to Json format
+
+httpconnector --> Database --> ObjectToJson
+
+->StandardDataSource
+Additional Global Elements: Bean, DerbyConfiguration
+
+
+2. REST service, query param --> persist into database(DBDerby/MYSql)
+
+3. XSLT --> XML stylesheet Transformation
+
+xml --> can be converted into html, doc, pdf, xsl, plain text, json by using XSLT.
+
+httpconnector -->  			converter(byte to String) --> xslt --> converter(byte to String) --> logger
+(REST WebServices -- XML)
+
+
+Day-9:
+
+FTP
+
+PollReferences(Database-->select)--> FTP(Filezilla client, server)
+	(1000ms)
+
+	1. Fixed Freequency Scheduler
+	2. Cron Scheduler
+	
+echo Componenet: use to print payload stack trace.
+
+Batch Process:
+---------------
+a. Batch Flow(input, job, after completion)
+b. How to trigger batch (batch execute)
+
+
+input --> Database (select records DB)
+batch Step --> FTP (write individual records)
+logger --> Job completion status
+
+
+batch execute --> FTP (input)
+
+
+Day 10:
+--------
+Anypoint MQ structure
+Active MQ
+--JMS services
+
+Queue:
+-------
+1. Point - to - point communication
+2. Publish and subscribe
+
+Active MQ:
+-----------
+
+JMS:
+-----
+JMS --> File
+
+
+Composite Source (Inbound endpoint):
+--------------------------------------
+
+we can implement the priority with the help of API endpoint
+
+
+Data Weave:
+-----------
+Here we need to use Transform Message Componenet
+
+create Metadata
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
